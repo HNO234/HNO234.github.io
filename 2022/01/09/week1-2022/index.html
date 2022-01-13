@@ -29,10 +29,10 @@
 <meta property="og:description" content="這個算是 2022 年計畫之一（？），每個禮拜會發文，主要分成兩部份，一個是知識分享，另外一部份是一周新聞大事整理。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://4.bp.blogspot.com/-fTZ8bDbIlk4/VUpSeR9PhpI/AAAAAAAApjc/TvyXZVrGQF0/s1600/%E6%93%B7%E5%8F%965.PNG">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Difference_between_deterministic_and_Nondeterministic.svg/1920px-Difference_between_deterministic_and_Nondeterministic.svg.png">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/1920px-P_np_np-complete_np-hard.svg.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/1/16/Difference_between_deterministic_and_Nondeterministic.svg">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/a/a0/P_np_np-complete_np-hard.svg">
 <meta property="article:published_time" content="2022-01-09T15:24:31.000Z">
-<meta property="article:modified_time" content="2022-01-12T09:27:55.177Z">
+<meta property="article:modified_time" content="2022-01-12T16:32:15.267Z">
 <meta property="article:author" content="Dave Kuo (HNO2)">
 <meta property="article:tag" content="Algorithms">
 <meta property="article:tag" content="2022">
@@ -237,7 +237,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-01-12 17:27:55" itemprop="dateModified" datetime="2022-01-12T17:27:55+08:00">2022-01-12</time>
+      <time title="Modified: 2022-01-13 00:32:15" itemprop="dateModified" datetime="2022-01-13T00:32:15+08:00">2022-01-13</time>
     </span>
 
   
@@ -280,12 +280,14 @@
 <p>這裡的問題指的是決定性問題（decision problem），指的是答案只有 Yes（Accept） 和 No（Reject） 的問題。不論回答是 Yes/No 都需要給出證明<br>大部份的最優化問題都可以轉成確定性問題，只要之後對答案二分搜即可，而二分搜通常只會對複雜度乘上一個 $n$。<br>廣義上來說，一個問題是一個語言（language），Accept 代表該字串在那個語言中。</p>
 <h2 id="P-問題"><a href="#P-問題" class="headerlink" title="P 問題"></a>P 問題</h2><p>P 是指可以由一台確定性圖靈機在多項式時間內確定的問題的集合。換言之該問題具有多項式時間的演算法。相信這類問題大家都很熟悉就不贅述了。</p>
 <h2 id="NP-問題"><a href="#NP-問題" class="headerlink" title="NP 問題"></a>NP 問題</h2><p>NP 是指可以由一台非確定性圖靈機在多項式時間內確定的問題的集合。非確定性圖靈機是控制規則每一步有多種選擇的圖靈機，而在多項式時間內確定的非確定性圖靈機，代表不管怎麼走他的執行步驟是 $n$ 的多項式。示意圖如下（圖取自維基百科；圖中的 $f(n)$ 代表圖靈機的執行時間複雜度）：</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Difference_between_deterministic_and_Nondeterministic.svg/1920px-Difference_between_deterministic_and_Nondeterministic.svg.png"></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Difference_between_deterministic_and_Nondeterministic.svg" class="svg"/>
+
 <p>非確定性圖靈機難以想像也很難實現，於是他有一個等價的定義：NP 是由存在多項式驗證演算法（verifier）的問題形成的集合。</p>
 <p>什麼是 verifier 呢？有點類似競程中的 checker，大概就是一個能夠驗證他是一個解的演算法。他的輸入會有原問題的輸入與一個附加訊息（通常稱為 certificate 或 proof），這個 verifier 的時間複雜度也是用他的輸入 $w$ 來決定的。</p>
 <p>舉例來說，Hamiltonian Path 問題的輸入會有一張圖，而他的 verifier 的輸入就包含原圖 $G$ 和一個結點的 permutation $c$，透過檢查這個 permutation 是不是一條合法的路徑就可以驗證 $c$ 是不是 $G$ 的一條合法路徑，因此 Hamiltonian Path 是 NP 問題。</p>
 <p>注意到 P 屬於 NP，因為每台多項式確定性圖靈機都是多項式非確定性圖靈機。但是 P 是否等於 NP 仍然是未解問題。（圖取自維基百科）</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/P_np_np-complete_np-hard.svg/1920px-P_np_np-complete_np-hard.svg.png"></p>
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/P_np_np-complete_np-hard.svg" class="svg"/>
+
 <h2 id="NP-hard-與-NP-complete"><a href="#NP-hard-與-NP-complete" class="headerlink" title="NP-hard 與 NP-complete"></a>NP-hard 與 NP-complete</h2><p>既然 P 是否等於 NP 仍然是未解問題，那我們會想要知道這些裡面「最難」的問題有哪些？或者說我們想要知道解決哪些問題相當於解決所有 NP 中的問題了？於是 NP-hard 的概念就出來了：NP-hard 指的是所有滿足「所有 NP 中的問題都能在多項式規約（polynomial time reducible）到這個問題」的所有問題的集合。而 NP-complete 就是 NP 與 NP-hard 的交集。</p>
 <p>規約的不嚴謹的敘述是將一個問題的輸入經過轉化成另一個問題的輸入，並且丟到另一個問題獲取解答。如果轉換過程是有關輸入長度的多項式的話那就是多項式規約。</p>
 <p>所以要證明一個問題是 NP-complete 包含證明他是 NP 和證明他是 NP-hard。證明是 NP 不是很困難，但是要證明是 NP-hard 就很困難了。幸好 Cook-Levin Theorem 證明了第一個屬於 NP-hard 的問題─SAT（證明過程佔了我的參考書 6 頁），之後要證明一個問題 NP-hard 就更容易了；只要隨便找一個 NP-hard 問題，之後證明他能多項式規約到他就可以了。</p>
