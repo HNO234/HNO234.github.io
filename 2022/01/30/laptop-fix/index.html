@@ -28,15 +28,15 @@
 <meta property="og:site_name" content="HNO2&#39;s Blog">
 <meta property="og:description" content="這次筆電爆掉從釐清問題到找到解決方案花了我快一天的時間 QQ。希望能做個紀錄之後發生類似的事情才會處理。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://imgur.com/a/gyIfFZz">
-<meta property="og:image" content="https://imgur.com/a/nP92cvT">
+<meta property="og:image" content="https://i.imgur.com/Nnw42jM.png">
+<meta property="og:image" content="https://i.imgur.com/jSlwLqm.png">
 <meta property="article:published_time" content="2022-01-30T15:16:59.000Z">
-<meta property="article:modified_time" content="2022-01-31T15:08:59.973Z">
+<meta property="article:modified_time" content="2022-02-04T12:32:47.710Z">
 <meta property="article:author" content="Dave Kuo (HNO2)">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://imgur.com/a/gyIfFZz">
+<meta name="twitter:image" content="https://i.imgur.com/Nnw42jM.png">
 
 
 <link rel="canonical" href="https://hno234.github.io/2022/01/30/laptop-fix/">
@@ -236,7 +236,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-01-31 23:08:59" itemprop="dateModified" datetime="2022-01-31T23:08:59+08:00">2022-01-31</time>
+      <time title="Modified: 2022-02-04 20:32:47" itemprop="dateModified" datetime="2022-02-04T20:32:47+08:00">2022-02-04</time>
     </span>
 
   
@@ -253,15 +253,16 @@
 <span id="more"></span>
 
 <h1 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h1><p>我的筆電分別有一顆傳統硬碟（/dev/sda）跟一顆固態硬碟（/dev/sdb），其中 /dev/sda2 裝 Ubuntu，/dev/sdb3 則是筆電預設的 Windows，分區如下圖。平常都是使用 Ubuntu 做事。</p>
-<p><img src="https://imgur.com/a/gyIfFZz"></p>
+<p><img src="https://i.imgur.com/Nnw42jM.png"></p>
 <p>在 IOICamp 第 3 天的下午，我的 Ubuntu 突然變得很奇怪，當我重開機以後發現他自動開 Windows 了QQ。</p>
 <h1 id="釐清問題"><a href="#釐清問題" class="headerlink" title="釐清問題"></a>釐清問題</h1><p>禮拜三當天遇到當天很不知所措，就去亂 Google 一些關鍵字，後來就通靈到（？）應該是 grub 出問題了，就去亂試一些方法（例如 Windows cmd 中輸入 <code>bcdedit /set &#123;bootmgr&#125; path \EFI\ubuntu\grubx64.efi</code>），結果都沒有用，只好被迫用了幾天 Windows（順便體驗 WSL（？））。後來找到<a target="_blank" rel="noopener" href="https://iter01.com/537840.html">這篇</a>文，但是需要開機 USB 有點麻煩 + 我那時候也滿忙的，就想說等到 IOIC + PCCAC 都結束以後再來弄。</p>
 <p>禮拜天當天隨便弄了一個開機 USB（用 NPSC 送的 USB XD），插進去照那篇文做以後，grub 是跑出來了，但是變成了 grub rescue 模式跑出來跟我說 Unknown file system。中途也嘗試了其他方法（例如把 /dev/sda2 mount 到 USB 的 ubuntu 底下跑 <code>grub-install</code>）但都還是跑出 grub rescue。</p>
 <p>上網查了一下，grub rescue 模式是 grub 找不到開機模組以後跑出來的，而要正常開機需要設定正確的 root 跟 prefix。（詳細可以參考<a target="_blank" rel="noopener" href="https://www.w3help.cc/a/202109/846459.html">這篇</a>）<code>ls</code> 後他告訴我我有 5 個分區 <code>(hd0),(hd0,gpt1),(hd0,gpt2),(hd0,gpt3),(hd0,gpt4)</code>，但是試探 <code>(hd0,xxx)/boot/grub</code> 每個都告訴我 Unknown File system，而不是正常的 <code>ext4</code>。重裝 grub 好幾次結果都一樣。</p>
 <p>這時候我已經很絕望了，甚至一度認為我要重灌系統了 QQ。但是我用 <code>fsck</code> 跟 <code>ldisk</code> 等工具都告訴我 /dev/sda2 是好的，就更讓我相信只是 grub 出問題了。</p>
 <p>直到那天晚上吃完飯以後我突然想到 <code>(hd0),(hd0,gpt1),(hd0,gpt2),(hd0,gpt3),(hd0,gpt4)</code> 會不會分別是指 <code>sdb</code> 底下的四個分區，後來查了一下果然沒錯。所以現在的問題就變成要怎麼讓 grub 裝在 /dev/sda 底下，而我用 BIOS 進去以後換另一個 Ubuntu 選項進去（我也不清楚為什麼有兩個），進去以後發現還是 grub rescue mode，但是 <code>ls</code> 以後發現多了一個兩個分區的硬碟。於是我猜他就是 /dev/sda，試探了一下他的 gpt2 以後發現他告訴我 file system 是 <code>ext4</code>，更驗證了我的猜測。於是照那篇文設定好 root 跟 prefix 以後，重新啟動就回到原本的 Ubuntu 桌面了 owo</p>
-<p><img src="https://imgur.com/a/nP92cvT"></p>
+<p><img src="https://i.imgur.com/jSlwLqm.png"></p>
 <h1 id="後續"><a href="#後續" class="headerlink" title="後續"></a>後續</h1><p>其實這個問題還沒完全解決，因為我現在直接進去還是會進去 rescue mode QQ。但至少現在是進的去原本的系統了，就想說之後要怎麼解決剩下 grub 的問題吧。</p>
+<p>Update: 我過幾天以後 grub 就自己好了。雖然不知道怎麼回事（我甚至什麼都沒做），但是至少看起來是修好了 OAO。</p>
 
     </div>
 
