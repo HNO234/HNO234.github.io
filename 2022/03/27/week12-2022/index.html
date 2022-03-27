@@ -21,29 +21,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hno234.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="今天好像是 TOI 初選，希望大家都有考好 OAO">
+<meta name="description" content="準備要開始進入期中考周了，結果前面卡了一個清明連假zzz。連假準備讀書嘍 QQ（不過我好像只有 2-3 科要準備？）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2022 Week 10">
-<meta property="og:url" content="https://hno234.github.io/2022/03/13/week10-2022/index.html">
+<meta property="og:title" content="2022 Week 11">
+<meta property="og:url" content="https://hno234.github.io/2022/03/27/week12-2022/index.html">
 <meta property="og:site_name" content="HNO2&#39;s Blog">
-<meta property="og:description" content="今天好像是 TOI 初選，希望大家都有考好 OAO">
+<meta property="og:description" content="準備要開始進入期中考周了，結果前面卡了一個清明連假zzz。連假準備讀書嘍 QQ（不過我好像只有 2-3 科要準備？）">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-03-12T23:45:12.000Z">
-<meta property="article:modified_time" content="2022-03-13T06:03:19.841Z">
+<meta property="article:published_time" content="2022-03-27T08:08:40.000Z">
+<meta property="article:modified_time" content="2022-03-27T09:23:35.523Z">
 <meta property="article:author" content="Dave Kuo (HNO2)">
-<meta property="article:tag" content="Algorithms">
 <meta property="article:tag" content="2022">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://hno234.github.io/2022/03/13/week10-2022/">
+<link rel="canonical" href="https://hno234.github.io/2022/03/27/week12-2022/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-tw","comments":true,"permalink":"https://hno234.github.io/2022/03/13/week10-2022/","path":"2022/03/13/week10-2022/","title":"2022 Week 10"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-tw","comments":true,"permalink":"https://hno234.github.io/2022/03/27/week12-2022/","path":"2022/03/27/week12-2022/","title":"2022 Week 11"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>2022 Week 10 | HNO2's Blog</title>
+<title>2022 Week 11 | HNO2's Blog</title>
   
 
 
@@ -121,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%9F%E6%9C%9B%E5%80%BC%E7%9A%84%E4%B8%80%E5%80%8B%E9%80%B2%E9%9A%8E%E6%87%89%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">期望值的一個進階應用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E8%BF%91%E6%96%B0%E8%81%9E"><span class="nav-number">2.</span> <span class="nav-text">最近新聞</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lvalue-amp-rvalue-in-C"><span class="nav-number">1.</span> <span class="nav-text">lvalue &amp; rvalue in C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-lvalue-amp-rvalue"><span class="nav-number">1.1.</span> <span class="nav-text">What is lvalue &amp; rvalue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lvalue-amp-rvalue-with-references"><span class="nav-number">1.2.</span> <span class="nav-text">lvalue &amp; rvalue with references</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Applications-of-rvalue-reference"><span class="nav-number">1.3.</span> <span class="nav-text">Applications of rvalue reference</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E8%81%9E"><span class="nav-number">2.</span> <span class="nav-text">新聞</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://hno234.github.io/2022/03/13/week10-2022/">
+    <link itemprop="mainEntityOfPage" href="https://hno234.github.io/2022/03/27/week12-2022/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -214,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2022 Week 10
+          2022 Week 11
         </h1>
 
         <div class="post-meta-container">
@@ -226,7 +226,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-03-13 07:45:12 / Modified: 14:03:19" itemprop="dateCreated datePublished" datetime="2022-03-13T07:45:12+08:00">2022-03-13</time>
+      <time title="Created: 2022-03-27 16:08:40 / Modified: 17:23:35" itemprop="dateCreated datePublished" datetime="2022-03-27T16:08:40+08:00">2022-03-27</time>
     </span>
 
   
@@ -239,30 +239,43 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>今天好像是 TOI 初選，希望大家都有考好 OAO</p>
+        <p>準備要開始進入期中考周了，結果前面卡了一個清明連假zzz。連假準備讀書嘍 QQ（不過我好像只有 2-3 科要準備？）</p>
 <span id="more"></span>
 
-<h1 id="期望值的一個進階應用"><a href="#期望值的一個進階應用" class="headerlink" title="期望值的一個進階應用"></a>期望值的一個進階應用</h1><p>這個禮拜要介紹的是一個期望值比較不常見，但是我覺得很有趣的應用。</p>
-<p>先講一下這個應用的原理：如果 $E[X] = d$，則 $\text{Pr}[X \geq d]&gt;0$，也就是說 $X$ 大於 $d$ 的機率不為 $0$。<br>這應該還滿好理解的，因為期望值就是一種平均，而一定有人會至少會有平均那麼多，就好像全班段考平均 $70$，就代表有人的分數至少是 $70$ 分。</p>
-<p>這個有什麼應用呢？考慮以下範例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">給定一張 n 個點 m 條邊的無向圖，請找到圖中一個至少有 m/2 條邊的二分圖子圖。</span><br></pre></td></tr></table></figure>
+<h1 id="lvalue-amp-rvalue-in-C"><a href="#lvalue-amp-rvalue-in-C" class="headerlink" title="lvalue &amp; rvalue in C++"></a>lvalue &amp; rvalue in C++</h1><p>注意：以下內容很多都是我今天才知道的，所以內容可能很不精確，如果看到有錯的可以糾正我w</p>
+<p>今天要介紹的主題是 lvalue 跟 rvalue。其實這是在 C 就有的東西了，只是在 modern C++ 有對這方面作大幅度的變化，對了解 modern C++ 滿有幫助的。</p>
+<h2 id="What-is-lvalue-amp-rvalue"><a href="#What-is-lvalue-amp-rvalue" class="headerlink" title="What is lvalue &amp; rvalue"></a>What is lvalue &amp; rvalue</h2><p>每個 C/C++ 當中的 Expression 都有 type 和 value 兩種屬性。lvalue 和 rvalue 是兩種 type 的種類，簡單來說：</p>
+<ul>
+<li>lvalue: 實際佔據一塊記憶體的值，例如自己定義的變數、指標、reference 等等。</li>
+<li>rvalue：不佔據記憶體，一離開該敘述就會消失的值，例如常量、暫存值等。</li>
+</ul>
+<p>值得注意的是，在 C++ 11 以後還多出了三個分類，分別叫 glvalue、prvalue、xvalue，和上面的兩種傳統分類有重疊關係。他們之間的關係與詳細定義可以參考<a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/value_category">這裡</a>。</p>
+<h2 id="lvalue-amp-rvalue-with-references"><a href="#lvalue-amp-rvalue-with-references" class="headerlink" title="lvalue &amp; rvalue with references"></a>lvalue &amp; rvalue with references</h2><p>這裡開始就有點錯蹤複雜了（？）</p>
+<ol>
+<li>lvalue reference：最傳統意義上的 Reference，可以指向 lvalue，不能指向 rvalue。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span>&amp; a_ref = a; <span class="comment">//ok</span></span><br><span class="line"><span class="keyword">int</span>&amp; a_ref = <span class="number">5</span>; <span class="comment">//error: cannot bind non-const lvalue reference of type ‘int&amp;’ to an rvalue of type ‘int’</span></span><br></pre></td></tr></table></figure>
 
-<p>這個例子乍看之下和機率一點關係都沒有，不過如果我們允許使用一些 randomness，這個問題就可以很神奇的被解決了！</p>
-<p>假設圖中每個點都已經被選好要在二分圖的哪一邊了（為了方便說明，假設是塗成紅色或藍色）。那我們就只需要把連接相異顏色的邊都選起來就好了。不過事情總不會都那麼順利，因為你選的染色方法可能會導致選到的邊不到 $\frac{m}{2}$ 條。</p>
-<p>這時候隨機過程就派上用場了：我們考慮把每個點塗成紅色或藍色隨機一種顏色，兩種顏色被選到的機率都是 $\frac{1}{2}$。則每條邊兩端有 $4$ 種塗法，有其中兩種會導致這條邊被選到，所以每條邊被選到的機率都是 $\frac{1}{2}$。根據 Linearity of Expectation，期望被選到的邊數就是 $\frac{m}{2}$。而根據我們一開始的論述，這代表至少有一種塗法會選到至少 $\frac{m}{2}$ 條邊！</p>
-<p>但是事情還沒結束，因為以上只能說明<strong>至少</strong>有一種塗法可以選到，並沒有告訴我們哪種選法可以選到。幸運的是，繼續推論下去，我們的確可以找到一種方法滿足條件。</p>
-<p>我們依照任意順序決定每個點的顏色。假設依照 $1,2,\cdots,n$ 的順序，而 $c_i = 0 \text{ or } 1$ 代表第 $i$ 個點的顏色。令 $X$ 是一個 random variable 代表選到的邊數，則我們對任意 $k$ 有</p>
-<p>\[ E[X|c_1,c_2,\cdots,c_{k-1}] = \frac{1}{2} E[X|c_1,c_2,\cdots,c_{k-1},c_k=0] + \frac{1}{2} E[X|c_1,c_2,\cdots,c_{k-1},c_k=1]\]</p>
-<p>\[  \max(\frac{1}{2} E[X|c_1,c_2,\cdots,c_{k-1},c_k=0], \frac{1}{2} E[X|c_1,c_2,\cdots,c_{k-1},c_k=1]) \geq E[X|c_1,c_2,\cdots,c_{k-1}] \]</p>
-<p>講白話文就是，我們依序考慮把每個點塗成紅色或藍色。每次考慮的時候，我們去考慮塗成兩種顏色時最後選到邊數的期望值，然後去選期望值比較大的那邊。因為這個過程期望值只會增加不會減少，所以可以保證最後會選到至少 $\frac{m}{2}$ 條邊。</p>
-<p>以上就是一個簡單的應用。因為我不想打太多字（X），所以底下這題就當練習題啦</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">給一張 n 個點 m 條邊的連通無向圖，其中 m &gt;= n/2。證明這張圖至少有大小為 n^2/4m 的獨立集。</span><br><span class="line">(Hint: 令 d = 2m/n。考慮以下隨機過程：先用 1-1/d 的機率刪掉每個點和所有他連到的邊，之後對於每條剩下的邊刪掉兩端其中一個點。可以證明這樣做剩下的點數期望值至少是 n^2/4m。)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>lvalue const reference：多了 const 以後，lvalue reference 就可以指向 rvalue 了：</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; a_ref = a; <span class="comment">//ok</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; a_ref = <span class="number">5</span>; <span class="comment">//ok</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="最近新聞"><a href="#最近新聞" class="headerlink" title="最近新聞"></a>最近新聞</h1><ul>
-<li>俄羅斯和烏克蘭的新聞還在持續，好多企業什麼的都考慮停止俄羅斯的業務，包含 IMO 跟 IOI 也在討論了 OAO。不過剛剛的新聞說他們在簽新的協議了，就再看看吧。</li>
-<li>最近幾天台中一中某個上音樂課影片燒起來了，我看完只感覺為什麼有老師會因為學生多學東西而爆氣的 ._.</li>
-<li>今天好熱，甚至還有到 30 幾度的。不過據說這禮拜四鋒面要來了，所以又要變冷了 ._.</li>
-<li>現在高中早自習被教育部拿掉了，改成自由參加，果然生不逢時阿 QQ</li>
+<ol start="3">
+<li>rvalue reference：C++ 11 以後的新功能，可以指向 rvalue，不能指向 lvalue。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span>&amp;&amp; a_ref = a; <span class="comment">//error: cannot bind rvalue reference of type ‘int&amp;&amp;’ to lvalue of type ‘int’</span></span><br><span class="line"><span class="keyword">int</span>&amp;&amp; a_ref = <span class="number">5</span>; <span class="comment">//ok</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Applications-of-rvalue-reference"><a href="#Applications-of-rvalue-reference" class="headerlink" title="Applications of rvalue reference"></a>Applications of rvalue reference</h2><p>rvalue reference 的其中一項用途是他可以讓複製次數大幅減少，主要意義在於移動原本的值。C++ 11 裡有一個 <code>std::move</code> 就是在做這件事，他的功用其實只有把 lvalue 改成 rvalue 而已。考慮以下交換兩個變數的例子（取自<a target="_blank" rel="noopener" href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html">這裡</a>）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="built_in">swap</span>(T&amp; a, T&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">T <span class="title">tmp</span><span class="params">(a)</span></span>;   <span class="comment">// now we have two copies of a</span></span><br><span class="line">    a = b;      <span class="comment">// now we have two copies of b</span></span><br><span class="line">    b = tmp;    <span class="comment">// now we have two copies of tmp (aka a)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到上面叫了三次 copy constructor。但是如果用 rvalue reference 實作的 <code>std::move</code> 的話就會改成移動值，效率會高很多：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span> <span class="built_in">swap</span>(T&amp; a, T&amp; b)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function">T <span class="title">tmp</span><span class="params">(std::move(a))</span></span>;</span><br><span class="line">    a = std::<span class="built_in">move</span>(b);   </span><br><span class="line">    b = std::<span class="built_in">move</span>(tmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="新聞"><a href="#新聞" class="headerlink" title="新聞"></a>新聞</h1><ul>
+<li>台灣疫情又開始燒了 QQ，今天確診就多了 83 個。我覺得尤其現在很多人已經防疫鬆懈了，要抓到傳播鏈的難度更高了，只能說再撐一下吧 QQ</li>
+<li>18 歲公民權在禮拜五的時候正式通過了，會在年底的時候辦公投，不過通過門檻感覺滿高的z</li>
+<li>拜登今天去華沙看烏克蘭難民，我才意識到戰爭已經打一個月了 QwQ</li>
 </ul>
 
     </div>
@@ -273,22 +286,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
               <a href="/tags/2022/" rel="tag"># 2022</a>
+              <a href="/tags/C/" rel="tag"># C++</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/03/06/week9-2022/" rel="prev" title="2022 Week 9">
-                  <i class="fa fa-chevron-left"></i> 2022 Week 9
+                <a href="/2022/03/20/week11-2022/" rel="prev" title="2022 Week 11">
+                  <i class="fa fa-chevron-left"></i> 2022 Week 11
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/03/20/week11-2022/" rel="next" title="2022 Week 11">
-                  2022 Week 11 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
