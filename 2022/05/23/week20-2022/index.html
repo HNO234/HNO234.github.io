@@ -21,30 +21,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hno234.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="最近正在開發某 Android App 專案，在寫的時候剛好遇到 coroutine 的概念，這個概念卻不太好理解，所以來紀錄一下。">
+<meta name="description" content="作業大致上是寫完了，接下來剩每科的期末作業跟期末考了。加油 OwO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin coroutine 概述（施工中）">
-<meta property="og:url" content="https://hno234.github.io/2021/07/23/kotlin-coroutine/index.html">
+<meta property="og:title" content="2022 Week 20">
+<meta property="og:url" content="https://hno234.github.io/2022/05/23/week20-2022/index.html">
 <meta property="og:site_name" content="HNO2&#39;s Blog">
-<meta property="og:description" content="最近正在開發某 Android App 專案，在寫的時候剛好遇到 coroutine 的概念，這個概念卻不太好理解，所以來紀錄一下。">
+<meta property="og:description" content="作業大致上是寫完了，接下來剩每科的期末作業跟期末考了。加油 OwO">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hno234.github.io/images/thread-coroutine.png">
-<meta property="article:published_time" content="2021-07-23T13:35:05.000Z">
-<meta property="article:modified_time" content="2021-08-02T06:29:32.537Z">
+<meta property="article:published_time" content="2022-05-23T14:32:56.000Z">
+<meta property="article:modified_time" content="2022-05-23T15:36:59.553Z">
 <meta property="article:author" content="Dave Kuo (HNO2)">
-<meta property="article:tag" content="Kotlin&#x2F;Android">
+<meta property="article:tag" content="2022">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hno234.github.io/images/thread-coroutine.png">
 
 
-<link rel="canonical" href="https://hno234.github.io/2021/07/23/kotlin-coroutine/">
+<link rel="canonical" href="https://hno234.github.io/2022/05/23/week20-2022/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-tw","comments":true,"permalink":"https://hno234.github.io/2021/07/23/kotlin-coroutine/","path":"2021/07/23/kotlin-coroutine/","title":"Kotlin coroutine 概述（施工中）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-tw","comments":true,"permalink":"https://hno234.github.io/2022/05/23/week20-2022/","path":"2022/05/23/week20-2022/","title":"2022 Week 20"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Kotlin coroutine 概述（施工中） | HNO2's Blog</title>
+<title>2022 Week 20 | HNO2's Blog</title>
   
 
 
@@ -122,7 +120,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Process%E3%80%81Thread-%E8%88%87-Coroutine-%E7%9A%84%E9%97%9C%E4%BF%82"><span class="nav-number">1.</span> <span class="nav-text">Process、Thread 與 Coroutine 的關係</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%BA%E4%BD%95%E9%9C%80%E8%A6%81-Multithread"><span class="nav-number">2.</span> <span class="nav-text">為何需要 Multithread</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kotlin-Coroutine-%E7%9A%84%E5%84%AA%E5%8B%A2"><span class="nav-number">3.</span> <span class="nav-text">Kotlin Coroutine 的優勢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%A6%E9%9A%9B%E8%AA%9E%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">實際語法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%95%9F%E5%8B%95%E4%B8%80%E5%80%8B%E7%B7%9A%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">啟動一個線程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E6%8F%9B%E5%88%B0%E4%B8%8D%E5%90%8C-Thread"><span class="nav-number">4.2.</span> <span class="nav-text">切換到不同 Thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Suspension-Function-%E8%88%87-Callback-Function"><span class="nav-number">4.3.</span> <span class="nav-text">Suspension Function 與 Callback Function</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Modern-C-%E9%9B%9C%E8%AB%87-1"><span class="nav-number">1.</span> <span class="nav-text">Modern C++ 雜談 - 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#auto-amp-decltype"><span class="nav-number">1.1.</span> <span class="nav-text">auto &amp; decltype</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structure-Bindings"><span class="nav-number">1.2.</span> <span class="nav-text">Structure Bindings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#If-and-Switch-with-Initialization"><span class="nav-number">1.3.</span> <span class="nav-text">If and Switch with Initialization</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E8%81%9E"><span class="nav-number">2.</span> <span class="nav-text">新聞</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -202,7 +200,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-tw">
-    <link itemprop="mainEntityOfPage" href="https://hno234.github.io/2021/07/23/kotlin-coroutine/">
+    <link itemprop="mainEntityOfPage" href="https://hno234.github.io/2022/05/23/week20-2022/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -215,7 +213,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Kotlin coroutine 概述（施工中）
+          2022 Week 20
         </h1>
 
         <div class="post-meta-container">
@@ -225,15 +223,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2021-07-23 21:35:05" itemprop="dateCreated datePublished" datetime="2021-07-23T21:35:05+08:00">2021-07-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-08-02 14:29:32" itemprop="dateModified" datetime="2021-08-02T14:29:32+08:00">2021-08-02</time>
+      <time title="Created: 2022-05-23 22:32:56 / Modified: 23:36:59" itemprop="dateCreated datePublished" datetime="2022-05-23T22:32:56+08:00">2022-05-23</time>
     </span>
 
   
@@ -246,22 +238,38 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>最近正在開發某 Android App 專案，在寫的時候剛好遇到 coroutine 的概念，這個概念卻不太好理解，所以來紀錄一下。</p>
+        <p>作業大致上是寫完了，接下來剩每科的期末作業跟期末考了。加油 OwO</p>
 <span id="more"></span>
 
-<p>在 Android 開發中，協程（coroutine）是 Kotlin 有別於 Java 的獨有概念。雖然其他語言也有 coroutine 的概念，但是由於 Kotlin 的語言特性，Kotlin coroutine 還是跟其他語言的不太一樣。至於哪裡不一樣我也不知道 :P</p>
-<p>以下說明是根據以下文章 + 我自己的粗淺理解寫出來的，如有錯誤歡迎指出：</p>
-<p><a target="_blank" rel="noopener" href="https://blog.kennycoder.io/2020/05/16/%E9%80%B2%E7%A8%8B-Process-%E3%80%81%E7%B7%9A%E7%A8%8B-Thread-%E3%80%81%E5%8D%94%E7%A8%8B-Coroutine-%E7%9A%84%E6%A6%82%E5%BF%B5%E8%AC%9B%E8%A7%A3/">進程 (Process)、線程 (Thread)、協程 (Coroutine) 的概念講解</a><br><a target="_blank" rel="noopener" href="https://rengwuxian.com/kotlin-coroutines-1/">Kotlin 的协程用力瞥一眼 - 学不会协程？很可能因为你看过的教程都是错的</a><br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10242047">進程、線程、協程，傻傻分得清楚！ </a><br>還有一篇文目前找不到，之後會補上。</p>
-<hr>
-<h1 id="Process、Thread-與-Coroutine-的關係"><a href="#Process、Thread-與-Coroutine-的關係" class="headerlink" title="Process、Thread 與 Coroutine 的關係"></a>Process、Thread 與 Coroutine 的關係</h1><p>在提到 Coroutine 之前需要理解這三者之間的關係。簡單來說：</p>
-<ul>
-<li>Process 就是執行中的程式，寫好的 program 執行了就是 Process。</li>
-<li>Thread 是輕量級的 Process ，Process 會進去 Thread 中執行任務；平常聽到的 Multithreading programming，就是把任務切到不同 Thread 中執行，利用多個 Thread 共享 Process 的資源的特性更快完成任務。</li>
-<li>Coroutine 是位於 Thread 中執行的一個個任務，通常一個 Thread 中只能執行一個 coroutine。特點是，coroutine 要位於哪個 Thread 中執行可以完全由使用者決定，也就是說，一個 coroutine 在執行中可以在多個 Thread 間切來切去。</li>
+<h1 id="Modern-C-雜談-1"><a href="#Modern-C-雜談-1" class="headerlink" title="Modern C++ 雜談 - 1"></a>Modern C++ 雜談 - 1</h1><p>我發現這是一個可以拖很久的主題 (X)，當沒東西寫的時候可以來寫 Modern C++ 的東西。</p>
+<p>主要就是介紹一些我知道的 Modern C++ 的一些酷功能。本篇的參考資料：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/users/20120425/ironman/2507?page=1">Link</a>。</p>
+<h2 id="auto-amp-decltype"><a href="#auto-amp-decltype" class="headerlink" title="auto &amp; decltype"></a>auto &amp; decltype</h2><p>auto 應該是我最常使用的 Modern C++ 功能了，他可以自動判斷宣告的變數的型別，示範程式碼如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;std::string&gt; names;</span><br><span class="line"><span class="keyword">auto</span> it = std::<span class="built_in">find</span>(names.<span class="built_in">begin</span>(), names.<span class="built_in">end</span>(), <span class="string">&quot;Tim&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>decltype 可能就比較人知道了。如果你想要宣告另一個變數跟一個已知的 instance 的型別一樣，decltype 就是一個好幫手。例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Container, <span class="keyword">typename</span> Index&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">DoSomething</span><span class="params">(Container&amp; c, Index i)</span> -&gt; <span class="title">decltype</span><span class="params">(c[i])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> c[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>順帶一提，如果想要一個 instance 的型別名稱，可以用 <code>typeid(decltype(instance)).name()</code>。</p>
+<h2 id="Structure-Bindings"><a href="#Structure-Bindings" class="headerlink" title="Structure Bindings"></a>Structure Bindings</h2><p>這是 C++17 的一個新功能，可以直接把一個複雜結構的內容取出來，不論是打比賽或實際開發都很好用。以我個人習慣的 Dijkstra 寫法來說，以往都是 first, second 滿天飛，出錯機率很高。有了 Structure Bindings 以後，結構就清楚很多：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (!pq.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">    <span class="keyword">auto</span> [distu, u] = pq.<span class="built_in">top</span>();</span><br><span class="line">    pq.<span class="built_in">pop</span>();</span><br><span class="line">    <span class="keyword">if</span> (dist[u] != dist[u]) <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> [vi, wi] : G[u]) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dist[vi] &gt; dist[u] + wi) &#123;</span><br><span class="line">            dist[vi] = dist[u] + wi;</span><br><span class="line">            pq.<span class="built_in">push</span>(&#123;dist[vi], vi&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更多資料可以參考<a target="_blank" rel="noopener" href="https://zh-blog.logan.tw/2019/10/29/cxx-17-structured-binding/">別人的筆記</a></p>
+<h2 id="If-and-Switch-with-Initialization"><a href="#If-and-Switch-with-Initialization" class="headerlink" title="If and Switch with Initialization"></a>If and Switch with Initialization</h2><p>我知道有這個功能但是一直被我忽略zz。直接看到例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> vi = <span class="built_in">GetIntegers</span>();</span><br><span class="line"><span class="keyword">if</span> (vi.<span class="built_in">empty</span>())</span><br><span class="line">  <span class="comment">// Do A.</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="comment">// Do B.</span></span><br></pre></td></tr></table></figure>
+
+<p>在這裡這個 if 用到上一行宣告的 vi 作為判斷條件。如果 vi 沒有要在其他地方用到，那他的 scope 就超過他會用到的範圍了，是一個出錯的來源。使用這個新功能可以限定這個變數只會在 if 裡出現：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">auto</span> vi = <span class="built_in">GetIntegers</span>(); vi.<span class="built_in">empty</span>())</span><br><span class="line">  <span class="comment">// Do A.</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="comment">// Do B.</span></span><br></pre></td></tr></table></figure>
+
+<p>下禮拜應該會介紹 C++11 以後的 smart pointer，希望我學的起來 OAO。</p>
+<h1 id="新聞"><a href="#新聞" class="headerlink" title="新聞"></a>新聞</h1><ul>
+<li><p>最近疫情每天都大概是幾萬例成長的，身邊也愈來愈多人確診了。不過最近感覺中重症比例開始起來了，可能要注意黑數的問題ㄌ</p>
+</li>
+<li><p>最近台科大畢典的來賓講的話鬧的很兇。我個人比較認同的看法是，你可以不喜歡同性婚姻，但是至少要做到尊重。我覺得他講的話已經到歧視的意味了。</p>
+</li>
+<li><p>美國最近有關墮胎的爭議滿多的，我對這個議題也沒有到很了解。先丟個<a target="_blank" rel="noopener" href="https://www.bbc.com/zhongwen/trad/world-61320676">連結</a></p>
+</li>
 </ul>
-<p>下圖可以一目了然這三者之間的關係（圖片擷取自上面第一篇文章）：<br><img src="/images/thread-coroutine.png" alt="Process、Thread 與 Coroutine 的關係"></p>
-<p>由於這篇不是特別探討三者關係的，就先寫到這裡了，有興趣的可以自己找資料（？）</p>
-<h1 id="為何需要-Multithread"><a href="#為何需要-Multithread" class="headerlink" title="為何需要 Multithread"></a>為何需要 Multithread</h1><h1 id="Kotlin-Coroutine-的優勢"><a href="#Kotlin-Coroutine-的優勢" class="headerlink" title="Kotlin Coroutine 的優勢"></a>Kotlin Coroutine 的優勢</h1><h1 id="實際語法"><a href="#實際語法" class="headerlink" title="實際語法"></a>實際語法</h1><h2 id="啟動一個線程"><a href="#啟動一個線程" class="headerlink" title="啟動一個線程"></a>啟動一個線程</h2><h2 id="切換到不同-Thread"><a href="#切換到不同-Thread" class="headerlink" title="切換到不同 Thread"></a>切換到不同 Thread</h2><h2 id="Suspension-Function-與-Callback-Function"><a href="#Suspension-Function-與-Callback-Function" class="headerlink" title="Suspension Function 與 Callback Function"></a>Suspension Function 與 Callback Function</h2>
+
     </div>
 
     
@@ -270,21 +278,18 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Kotlin-Android/" rel="tag"># Kotlin/Android</a>
+              <a href="/tags/2022/" rel="tag"># 2022</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/06/20/%E4%BA%A4%E5%A4%A7%E4%BF%AE%E8%AA%B2%E5%BF%83%E5%BE%97/" rel="prev" title="109-2 交大修課心得">
-                  <i class="fa fa-chevron-left"></i> 109-2 交大修課心得
+                <a href="/2022/05/15/week19-2022/" rel="prev" title="2022 Week 19">
+                  <i class="fa fa-chevron-left"></i> 2022 Week 19
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/08/01/ais3-2021/" rel="next" title="AIS3 2021">
-                  AIS3 2021 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
