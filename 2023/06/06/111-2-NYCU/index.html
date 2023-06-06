@@ -21,15 +21,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hno234.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="主科編譯器設計（游逸平&#x2F;資科工碩選修&#x2F;3 學分）上課內容、作業、考試主要內容是用 top-down 的方式介紹一個 compiler 怎麼被構出來的，從中會介紹相關的演算法和工具。老師上課很認真，人很好，雖然我覺得有點無趣就是了。 作業有五次，依序寫出一個語言的編譯器，從原始碼到組合語言，每次做業界是編譯器的一個步驟。體感 HW 1 和 2 很輕鬆，3 和 4 很痛苦，5 還沒寫不知道。不過寫">
+<meta name="description" content="這學期只修 10 學分，前半很輕鬆，但是後半忙的要命差點死去zz。照慣例寫個心得。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="111-2 陽明交大修課心得">
 <meta property="og:url" content="https://hno234.github.io/2023/06/06/111-2-NYCU/index.html">
 <meta property="og:site_name" content="HNO2&#39;s Blog">
-<meta property="og:description" content="主科編譯器設計（游逸平&#x2F;資科工碩選修&#x2F;3 學分）上課內容、作業、考試主要內容是用 top-down 的方式介紹一個 compiler 怎麼被構出來的，從中會介紹相關的演算法和工具。老師上課很認真，人很好，雖然我覺得有點無趣就是了。 作業有五次，依序寫出一個語言的編譯器，從原始碼到組合語言，每次做業界是編譯器的一個步驟。體感 HW 1 和 2 很輕鬆，3 和 4 很痛苦，5 還沒寫不知道。不過寫">
+<meta property="og:description" content="這學期只修 10 學分，前半很輕鬆，但是後半忙的要命差點死去zz。照慣例寫個心得。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2023-06-06T07:44:45.000Z">
-<meta property="article:modified_time" content="2023-06-06T07:46:53.770Z">
+<meta property="article:modified_time" content="2023-06-06T08:23:50.528Z">
 <meta property="article:author" content="Dave Kuo (HNO2)">
 <meta property="article:tag" content="NCTU&#x2F;NYCU">
 <meta name="twitter:card" content="summary">
@@ -225,7 +225,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-06-06 15:44:45 / Modified: 15:46:53" itemprop="dateCreated datePublished" datetime="2023-06-06T15:44:45+08:00">2023-06-06</time>
+      <time title="Created: 2023-06-06 15:44:45 / Modified: 16:23:50" itemprop="dateCreated datePublished" datetime="2023-06-06T15:44:45+08:00">2023-06-06</time>
     </span>
 
   
@@ -238,7 +238,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <span id="more"></span>
+        <p>這學期只修 10 學分，前半很輕鬆，但是後半忙的要命差點死去zz。照慣例寫個心得。</p>
+<span id="more"></span>
 
 <h1 id="主科"><a href="#主科" class="headerlink" title="主科"></a>主科</h1><h2 id="編譯器設計（游逸平-資科工碩選修-3-學分）"><a href="#編譯器設計（游逸平-資科工碩選修-3-學分）" class="headerlink" title="編譯器設計（游逸平/資科工碩選修/3 學分）"></a>編譯器設計（游逸平/資科工碩選修/3 學分）</h2><h3 id="上課內容、作業、考試"><a href="#上課內容、作業、考試" class="headerlink" title="上課內容、作業、考試"></a>上課內容、作業、考試</h3><p>主要內容是用 top-down 的方式介紹一個 compiler 怎麼被構出來的，從中會介紹相關的演算法和工具。老師上課很認真，人很好，雖然我覺得有點無趣就是了。</p>
 <p>作業有五次，依序寫出一個語言的編譯器，從原始碼到組合語言，每次做業界是編譯器的一個步驟。體感 HW 1 和 2 很輕鬆，3 和 4 很痛苦，5 還沒寫不知道。不過寫作業本身還滿無腦的，大概就是把 spec 裡面的東西照著實作出來，有出錯查網路大概都能找出問題。</p>
